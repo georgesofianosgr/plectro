@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import colors from "../../colors";
+import styled from 'styled-components';
+import colors from '../../colors';
 
 export default {
   TypingEngine: styled.div`
@@ -31,6 +31,5 @@ export default {
   `,
   Finished: styled.div`
     font-size: 44px;
-  `
+  `,
 };
-

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
@@ -25,5 +25,5 @@ export default {
   `,
   Content: styled.div`
     flex: 1;
-  `
+  `,
 };

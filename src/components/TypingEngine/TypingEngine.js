@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Progress } from "antd";
-import Character from "../Character";
-import Styled from "./TypingEngine.Styled";
-import colors from "../../colors";
+import React, { useState, useEffect } from 'react';
+import { Progress } from 'antd';
+import Character from '../Character';
+import Styled from './TypingEngine.Styled';
+import colors from '../../colors';
 
-const TypingEngine = ({ onFinish }) => {
-  const savedText = localStorage.getItem("text");
-  const text =
-    savedText ||
-    "This is the default text to type.\nUse the button on the upper right to change stream.";
-  const textArray = text.split("");
+const TypingEngine = () => {
+  const savedText = localStorage.getItem('text');
+  const text = savedText || 'This is the default text to type.\nUse the button on the upper right to change stream.';
+  const textArray = text.split('');
 
   const [typedCharacters, setTypedCharacters] = useState([]);
   const [startTime, setStartTime] = useState();
@@ -17,7 +15,7 @@ const TypingEngine = ({ onFinish }) => {
 
   const onCharacterPress = event => {
     const keyCode = event.which;
-    const inputCharacter = keyCode === 13 ? "\n" : String.fromCharCode(keyCode);
+    const inputCharacter = keyCode === 13 ? '\n' : String.fromCharCode(keyCode);
 
     if (!startTime) {
       setStartTime(Date.now());
@@ -35,24 +33,22 @@ const TypingEngine = ({ onFinish }) => {
   const onKeyDown = event => {
     const keyCode = event.which;
     if (keyCode === 8 && typedCharacters.length !== 0) {
-      setTypedCharacters([
-        ...typedCharacters.slice(0, typedCharacters.length - 1)
-      ]);
+      setTypedCharacters([...typedCharacters.slice(0, typedCharacters.length - 1)]);
     }
   };
 
   useEffect(() => {
-    document.addEventListener("keydown", onKeyDown);
-    document.addEventListener("keypress", onCharacterPress);
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('keypress', onCharacterPress);
 
     return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      document.removeEventListener("keypress", onCharacterPress);
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('keypress', onCharacterPress);
     };
   });
 
   const finished = textArray.length === typedCharacters.length;
-  const numberOfWords = text.split(" ").length;
+  const numberOfWords = text.split(' ').length;
   const millisUntilFinish = Date.now() - startTime;
   const secondsUntilFinish = Math.floor(millisUntilFinish / 1000);
   const WPM = Math.round(numberOfWords / (secondsUntilFinish / 60));
@@ -60,28 +56,21 @@ const TypingEngine = ({ onFinish }) => {
 
   return (
     <Styled.TypingEngine>
-      {finished && (
-        <Styled.Finished>{`${WPM} WPM - ${accuracy}% Accuracy`}</Styled.Finished>
-      )}
+      {finished && <Styled.Finished>{`${WPM} WPM - ${accuracy}% Accuracy`}</Styled.Finished>}
       {!finished && (
         <>
           <Styled.CharactersBody>
             {textArray.map((character, index) => (
+              /* This rule can be disabled when array doesn't have unique value */
+              /* eslint-disable react/no-array-index-key */
               <React.Fragment key={`${index}${character}`}>
                 <Character
-                  key={`${index}${character}`}
                   character={character}
                   current={typedCharacters.length === index}
                   filled={typedCharacters.length > index}
-                  valid={
-                    typedCharacters[index]
-                      ? typedCharacters[index] === character
-                      : undefined
-                  }
+                  valid={typedCharacters[index] ? typedCharacters[index] === character : undefined}
                 />
-                {character.match(/\n/) && (
-                  <div style={{ flex: "100%", height: 0 }}></div>
-                )}
+                {character.match(/\n/) && <div style={{ flex: '100%', height: 0 }} />}
               </React.Fragment>
             ))}
           </Styled.CharactersBody>

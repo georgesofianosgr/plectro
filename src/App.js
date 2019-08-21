@@ -1,8 +1,8 @@
-import React from "react";
-import "antd/dist/antd.css";
-import Header from "./components/Header";
-import TypingEngine from "./components/TypingEngine";
-import Styled, { GlobalStyle } from "./App.Styled";
+import React from 'react';
+import 'antd/dist/antd.css';
+import Header from './components/Header';
+import TypingEngine from './components/TypingEngine';
+import Styled, { GlobalStyle } from './App.Styled';
 
 function App() {
   return (

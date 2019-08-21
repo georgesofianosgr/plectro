@@ -1,1 +1,1 @@
-export { default } from "./TypingEngine";
+export { default } from './TypingEngine';

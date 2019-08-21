@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import colors from "../../colors";
+import styled from 'styled-components';
+import colors from '../../colors';
 
 export default {
   Header: styled.div`
@@ -7,10 +7,10 @@ export default {
     justify-content: space-between;
   `,
   Logo: styled.div`
-    @import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
+    @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
     color: white;
     font-size: 35px;
-    font-family: "Righteous", cursive;
+    font-family: 'Righteous', cursive;
     cursor: pointer;
   `,
   LogoLine: styled.div`
@@ -23,5 +23,5 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  `
+  `,
 };
