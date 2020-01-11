@@ -12,8 +12,12 @@ const Character = ({ character, current, valid, filled }) => (
 Character.propTypes = {
   character: PropTypes.string.isRequired,
   current: PropTypes.bool.isRequired,
-  valid: PropTypes.bool.isRequired,
+  valid: PropTypes.bool,
   filled: PropTypes.bool.isRequired,
+};
+
+Character.defaultProps = {
+  valid: undefined,
 };
 
 export default Character;

@@ -3,19 +3,22 @@ import colors from '../../colors';
 
 export default {
   TypingEngine: styled.div`
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    flex-direction: column;
   `,
   CharactersBody: styled.div`
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
     width: 1024px;
     margin: 0 15px;
-    margin-top: -200px;
+    // margin-top: -200px;
   `,
   ProgressWrapper: styled.div`
     position: fixed;
